@@ -10,9 +10,11 @@ public class BibliotecaApp {
     List<Book> listOfBooks;
     String[] menuList;
     Scanner scanner;
+    BookList bookList;
 
     public BibliotecaApp(List<Book> listOfBooks, String[] menuList){
         this.listOfBooks = listOfBooks;
+        this.bookList = new BookList(this.listOfBooks);
         this.menuList = menuList;
         this.scanner = new Scanner(System.in);
     }
@@ -60,11 +62,37 @@ public class BibliotecaApp {
         System.exit(0);
     }
 
-   /* public void checkoutBook(String bookName){
-        if (listOfBooks.contains(bookName)){
-
+    public void checkOutBook(String bookName){
+        if (bookList.isExist(bookName)){
+            Book book = bookList.getBook(bookName);
+            if (!book.isCheckOut()){
+                bookList.getBook(bookName).checkOut();
+                System.out.println("Thank you! Enjoy the book");
+            }
+            else {
+                System.out.println("Sorry, that book is not available");
+            }
         }
-    }*/
+        else {
+            System.out.println("Sorry, that book is not available");
+        }
+    }
+
+    public void returnBook(String bookName){
+        if (bookList.isExist(bookName)) {
+            Book book = bookList.getBook(bookName);
+            if (book.isOnLeased){
+                book.returnBook();
+                System.out.println("Thank you for returning the book");
+            }
+            else {
+                System.out.println("This is not a valid book to return");
+            }
+        }
+        else {
+            System.out.println("This is not a valid book to return");
+        }
+    }
 
 
 

@@ -19,16 +19,18 @@ public class ExampleTest {
 
     BibliotecaApp bibliotecaApp;
     BibliotecaApp bibliotecaAppMock;
-    List<Book> bookList;
+    List<Book> listOfBooks;
     String[] menuOption;
+    BookList bookList;
 
     @Before
     public void setUp(){
-        bookList = Arrays.asList(new Book("Close to the Machine", "Ellen Ullman", 1997),
+        listOfBooks= Arrays.asList(new Book("Close to the Machine", "Ellen Ullman", 1997),
                 new Book("The Art of Unix Programming", "Eric Raymond", 2003),
                 new Book("Free Software, Free Society", "Richard M. Stallman", 2002));
+        bookList = new BookList(listOfBooks);
         menuOption = new String[]{"List of Books"};
-        bibliotecaApp = new BibliotecaApp(bookList, menuOption);
+        bibliotecaApp = new BibliotecaApp(listOfBooks, menuOption);
         bibliotecaAppMock = mock(BibliotecaApp.class);
     }
 
@@ -52,8 +54,8 @@ public class ExampleTest {
         bibliotecaApp.viewListOfBooks();
 
         verify(actualPrintBookMenu).printf(listFormat, "Title", "Author", "Publication Year");
-        for (int i=0; i < bookList.size(); i++){
-            verify(actualPrintBookMenu).printf(listFormat, bookList.get(i).title, bookList.get(i).author, bookList.get(i).publicationYear);
+        for (int i=0; i < listOfBooks.size(); i++){
+            verify(actualPrintBookMenu).printf(listFormat, listOfBooks.get(i).title, listOfBooks.get(i).author, listOfBooks.get(i).publicationYear);
         }
     }
 
@@ -110,8 +112,8 @@ public class ExampleTest {
         bibliotecaApp.selectOption(0);
 
         verify(actualResponseMessage).printf(listFormat, "Title", "Author", "Publication Year");
-        for (int i=0; i < bookList.size(); i++) {
-            verify(actualResponseMessage).printf(listFormat, bookList.get(i).title, bookList.get(i).author, bookList.get(i).publicationYear);
+        for (int i=0; i < listOfBooks.size(); i++) {
+            verify(actualResponseMessage).printf(listFormat, listOfBooks.get(i).title, listOfBooks.get(i).author, listOfBooks.get(i).publicationYear);
         }
     }
 
@@ -145,8 +147,120 @@ public class ExampleTest {
         assertTrue(isCheckOut);
     }
 
+    @Test
+    public void testWhenTheBookIsNotInTheListOfBooks(){
+        String bookName = "Happy Day";
+        boolean actualOutput = this.bookList.isExist(bookName);
+        assertFalse(actualOutput);
+    }
 
+    @Test
+    public void testWhenTheBookIsInTheListOfBooks(){
+        String bookName = "Free Software, Free Society";
+        boolean actualOutput = this.bookList.isExist(bookName);
+        assertTrue(actualOutput);
+    }
 
+    @Test
+    public void testGetBookByBookNameIfBookExists(){
+        String bookName = "Free Software, Free Society";
+        Book expectedBook = new Book("Free Software, Free Society", "Richard M. Stallman", 2002);
+        Book actualBook = bookList.getBook(bookName);
+        assertEquals(actualBook.title, expectedBook.title);
+        assertEquals(actualBook.author, expectedBook.author);
+        assertEquals(actualBook.publicationYear, expectedBook.publicationYear);
+        assertEquals(actualBook.isOnLeased, expectedBook.isOnLeased);
+    }
+
+    @Test
+    public void testUserCanCheckOutBookByChangingTheStateOfTheBookToTrue(){
+        String inputBookName = "Free Software, Free Society";
+
+        bibliotecaApp.checkOutBook(inputBookName);
+
+        assertTrue(bookList.getBook(inputBookName).isOnLeased);
+
+    }
+
+    @Test
+    public void testUserSuccessfullyCheckOutBookIfBookExistAndIsNotOnLeased(){
+        PrintStream actualPrintStatement = mock(PrintStream.class);
+        System.setOut(actualPrintStatement);
+        String inputBookName = "Free Software, Free Society";
+
+        bibliotecaApp.checkOutBook(inputBookName);
+
+        verify(actualPrintStatement).println("Thank you! Enjoy the book");
+    }
+
+    @Test
+    public void testUserFailToCheckOutBookIfBookExistAndIsOnLeased(){
+        PrintStream actualPrintStatement = mock(PrintStream.class);
+        System.setOut(actualPrintStatement);
+        String inputBookName = "Free Software, Free Society";
+        bookList.getBook(inputBookName).checkOut();
+        bibliotecaApp.checkOutBook(inputBookName);
+
+        verify(actualPrintStatement).println("Sorry, that book is not available");
+    }
+
+    @Test
+    public void testUserFailToCheckOutBookIfBookDoesNotExist(){
+        PrintStream actualPrintStatement = mock(PrintStream.class);
+        System.setOut(actualPrintStatement);
+        String inputBookName = "Frez";
+
+        bibliotecaApp.checkOutBook(inputBookName);
+
+        verify(actualPrintStatement).println("Sorry, that book is not available");
+    }
+
+    @Test
+    public void testUserCanReturnBookByChangingTheStateOfBookToFalse(){
+        String inputBookName = "Free Software, Free Society";
+        Book book = bookList.getBook(inputBookName);
+        book.checkOut();
+        bibliotecaApp.returnBook(inputBookName);
+
+        assertFalse(book.isOnLeased);
+    }
+
+    @Test
+    public void testNotifyUserOnSuccessfulReturnIfBookExistsAndIsOnLeased(){
+        PrintStream actualPrintStatement = mock(PrintStream.class);
+        System.setOut(actualPrintStatement);
+
+        String bookName = "Free Software, Free Society";
+        Book book = bookList.getBook(bookName);
+        book.checkOut();
+        bibliotecaApp.returnBook(bookName);
+
+        verify(actualPrintStatement).println("Thank you for returning the book");
+    }
+
+    @Test
+    public void testNotifyFailReturnIfBookDoestNotExists(){
+        PrintStream actualPrintStatement = mock(PrintStream.class);
+        System.setOut(actualPrintStatement);
+
+        String bookName = "Free";
+
+        bibliotecaApp.returnBook(bookName);
+
+        verify(actualPrintStatement).println("This is not a valid book to return");
+    }
+
+    @Test
+    public void testNotifyFailReturnIfBookExistsAndIsNotOnLeased(){
+        PrintStream actualPrintStatement = mock(PrintStream.class);
+        System.setOut(actualPrintStatement);
+
+        String bookName = "Free Software, Free Society";
+        Book book = bookList.getBook(bookName);
+        bibliotecaApp.returnBook(bookName);
+
+        verify(actualPrintStatement).println("This is not a valid book to return");
+    }
 
 
 
