@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c15c0487-5e9b-4a71-a49b-6023332c2b07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/byte_buddy_1_10_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mockito_core_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/objenesis_tck_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TWU_Biblioteca-master.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/biblioteca.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/byte-buddy-1.10.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/junit-4.11.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/mockito-core-3.1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/objenesis-tck-3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TWU_Biblioteca-master/META-INF/TWU_Biblioteca-master.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TWU_Biblioteca-master/com/twu/biblioteca/BibliotecaApp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/TWU_Biblioteca-master/com/twu/biblioteca/Book.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/test/TWU_Biblioteca-master/com/twu/biblioteca/ExampleTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="c15c0487-5e9b-4a71-a49b-6023332c2b07" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
