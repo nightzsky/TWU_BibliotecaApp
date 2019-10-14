@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c15c0487-5e9b-4a71-a49b-6023332c2b07" name="Default Changelist" comment="" />
+    <list default="true" id="c15c0487-5e9b-4a71-a49b-6023332c2b07" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TWU_Biblioteca-master/com/twu/biblioteca/BibliotecaApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TWU_Biblioteca-master/com/twu/biblioteca/BibliotecaApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TWU_Biblioteca-master/com/twu/biblioteca/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TWU_Biblioteca-master/com/twu/biblioteca/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/TWU_Biblioteca-master/com/twu/biblioteca/ExampleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/TWU_Biblioteca-master/com/twu/biblioteca/ExampleTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,20 +50,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ExampleTest.testSelectQuitApplicationOption">
-    <configuration name="BibliotecaApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaApp" />
-      <module name="TWU_Biblioteca-master" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.twu.biblioteca.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ExampleTest.testBookIsCheckOutWhenBookIsAvailable">
     <configuration name="BibliotecaTest" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.ExampleTest" />
       <module name="TWU_Biblioteca-master" />
@@ -63,7 +58,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExampleTest.testInvalidOption" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ExampleTest.testBookIsCheckOutWhenBookIsAvailable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TWU_Biblioteca-master" />
       <extension name="coverage">
         <pattern>
@@ -73,13 +68,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.ExampleTest" />
-      <option name="METHOD_NAME" value="testInvalidOption" />
+      <option name="METHOD_NAME" value="testBookIsCheckOutWhenBookIsAvailable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExampleTest.testSelectQuitApplicationOption" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ExampleTest.testBookIsCheckOutWhenBookIsNotAvailable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TWU_Biblioteca-master" />
       <extension name="coverage">
         <pattern>
@@ -89,13 +84,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.ExampleTest" />
-      <option name="METHOD_NAME" value="testSelectQuitApplicationOption" />
+      <option name="METHOD_NAME" value="testBookIsCheckOutWhenBookIsNotAvailable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExampleTest.testSelectViewListOfBooksOption" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ExampleTest.testChangeBookIsOnLeasedToFalseForReturnBookMethod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TWU_Biblioteca-master" />
       <extension name="coverage">
         <pattern>
@@ -105,13 +100,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.ExampleTest" />
-      <option name="METHOD_NAME" value="testSelectViewListOfBooksOption" />
+      <option name="METHOD_NAME" value="testChangeBookIsOnLeasedToFalseForReturnBookMethod" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExampleTest.testViewMenuList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ExampleTest.testChangeBookIsOnLeasedToTrueForCheckOutMethod" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TWU_Biblioteca-master" />
       <extension name="coverage">
         <pattern>
@@ -121,7 +116,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.ExampleTest" />
-      <option name="METHOD_NAME" value="testViewMenuList" />
+      <option name="METHOD_NAME" value="testChangeBookIsOnLeasedToTrueForCheckOutMethod" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExampleTest.testCheckBookAvailabilityWhenBookIsAvailable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TWU_Biblioteca-master" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.twu.biblioteca.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
+      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.ExampleTest" />
+      <option name="METHOD_NAME" value="testCheckBookAvailabilityWhenBookIsAvailable" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -134,7 +145,6 @@
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
-      <fork_mode value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -142,19 +152,19 @@
     <list>
       <item itemvalue="Application.BibliotecaTest" />
       <item itemvalue="JUnit.Test" />
-      <item itemvalue="JUnit.ExampleTest.testInvalidOption" />
-      <item itemvalue="JUnit.ExampleTest.testViewMenuList" />
-      <item itemvalue="Application.BibliotecaApp" />
-      <item itemvalue="JUnit.ExampleTest.testSelectViewListOfBooksOption" />
-      <item itemvalue="JUnit.ExampleTest.testSelectQuitApplicationOption" />
+      <item itemvalue="JUnit.ExampleTest.testChangeBookIsOnLeasedToTrueForCheckOutMethod" />
+      <item itemvalue="JUnit.ExampleTest.testChangeBookIsOnLeasedToFalseForReturnBookMethod" />
+      <item itemvalue="JUnit.ExampleTest.testCheckBookAvailabilityWhenBookIsAvailable" />
+      <item itemvalue="JUnit.ExampleTest.testBookIsCheckOutWhenBookIsAvailable" />
+      <item itemvalue="JUnit.ExampleTest.testBookIsCheckOutWhenBookIsNotAvailable" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ExampleTest.testSelectQuitApplicationOption" />
-        <item itemvalue="JUnit.ExampleTest.testInvalidOption" />
-        <item itemvalue="JUnit.ExampleTest.testSelectViewListOfBooksOption" />
-        <item itemvalue="Application.BibliotecaApp" />
-        <item itemvalue="JUnit.ExampleTest.testViewMenuList" />
+        <item itemvalue="JUnit.ExampleTest.testBookIsCheckOutWhenBookIsAvailable" />
+        <item itemvalue="JUnit.ExampleTest.testBookIsCheckOutWhenBookIsNotAvailable" />
+        <item itemvalue="JUnit.ExampleTest.testCheckBookAvailabilityWhenBookIsAvailable" />
+        <item itemvalue="JUnit.ExampleTest.testChangeBookIsOnLeasedToFalseForReturnBookMethod" />
+        <item itemvalue="JUnit.ExampleTest.testChangeBookIsOnLeasedToTrueForCheckOutMethod" />
       </list>
     </recent_temporary>
   </component>
@@ -187,55 +197,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java</url>
-          <line>25</line>
-          <properties class="com.twu.biblioteca.ExampleTest" method="setUp">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java</url>
-          <line>44</line>
-          <properties class="com.twu.biblioteca.ExampleTest" method="testViewListOfBooks">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java</url>
-          <line>85</line>
-          <properties class="com.twu.biblioteca.ExampleTest" method="testInvalidOption">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java</url>
-          <line>104</line>
-          <properties class="com.twu.biblioteca.ExampleTest" method="testSelectViewListOfBooksOption">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java</url>
-          <line>94</line>
-          <properties class="com.twu.biblioteca.ExampleTest" method="testSelectQuitApplicationOption">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="14" />
+          <line>122</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/TWU_Biblioteca_master$Test.ic" NAME="Test Coverage Results" MODIFIED="1571036158075" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

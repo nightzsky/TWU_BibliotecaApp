@@ -20,4 +20,11 @@ public class Book {
     void returnBook(){
         this.isOnLeased = false;
     }
+
+    boolean isCheckOut(){
+        if (this.isOnLeased){
+            return true;
+        }
+        return false;
+    }
 }

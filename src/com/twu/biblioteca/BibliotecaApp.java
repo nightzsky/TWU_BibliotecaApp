@@ -44,7 +44,7 @@ public class BibliotecaApp {
     public void selectOption(int index){
         if (index > menuList.length-1){
             System.out.println("Please select a valid option!");
-            this.getUserInputInteger("Please key in again.");
+            //this.getUserInputInteger("Please key in again.");
             //prompt for user input
         }
         if (index == 0){

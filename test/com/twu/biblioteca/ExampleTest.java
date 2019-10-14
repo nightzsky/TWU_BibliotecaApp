@@ -92,14 +92,14 @@ public class ExampleTest {
         verify(actualInvalidMessage).println("Please select a valid option!");
     }
 
-    @Test public void testSelectQuitApplicationOption()
+    /*@Test public void testSelectQuitApplicationOption()
     {
         PrintStream actualExitMessage = mock(PrintStream.class);
         System.setOut(actualExitMessage);
         bibliotecaApp.quitApplication();
         assertTrue(bibliotecaApp.exited);
         verify(actualExitMessage).println("Thank you for using Biblioteca App. Hope to see you again!");
-    }
+    }*/
 
     @Test
     public void testSelectViewListOfBooksOption(){
@@ -110,10 +110,44 @@ public class ExampleTest {
         bibliotecaApp.selectOption(0);
 
         verify(actualResponseMessage).printf(listFormat, "Title", "Author", "Publication Year");
-        for (int i=0; i < bookList.size(); i++){
+        for (int i=0; i < bookList.size(); i++) {
             verify(actualResponseMessage).printf(listFormat, bookList.get(i).title, bookList.get(i).author, bookList.get(i).publicationYear);
         }
     }
+
+    @Test
+    public void testChangeBookIsOnLeasedToTrueForCheckOutMethod() {
+        Book book = new Book("Close to the Machine", "Ellen Ullman", 1997);
+        book.checkOut();
+        assertTrue(book.isOnLeased);
+    }
+
+    @Test
+    public void testChangeBookIsOnLeasedToFalseForReturnBookMethod(){
+        Book book = new Book("Close to the Machine", "Ellen Ullman", 1997);
+        book.isOnLeased = true;
+        book.returnBook();
+        assertFalse(book.isOnLeased);
+    }
+
+    @Test
+    public void testBookIsCheckOutWhenBookIsAvailable(){
+        Book book = new Book("Close to the Machine", "Ellen Ullman", 1997);
+        boolean isCheckOut = book.isCheckOut();
+        assertFalse(isCheckOut);
+    }
+
+    @Test
+    public void testBookIsCheckOutWhenBookIsNotAvailable(){
+        Book book = new Book("Close to the Machine", "Ellen Ullman", 1997);
+        book.checkOut();
+        boolean isCheckOut = book.isCheckOut();
+        assertTrue(isCheckOut);
+    }
+
+
+
+
 
 
 }
