@@ -27,4 +27,20 @@ public class Book {
         }
         return false;
     }
+
+    String getTitle(){
+        return this.title;
+    }
+
+    String getAuthor(){
+        return this.author;
+    }
+
+    boolean getIsOnLeased(){
+        return this.isOnLeased;
+    }
+
+    int getPublicationYear(){
+        return this.publicationYear;
+    }
 }

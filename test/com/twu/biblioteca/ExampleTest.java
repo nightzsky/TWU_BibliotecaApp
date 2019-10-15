@@ -3,9 +3,9 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +18,6 @@ import static org.mockito.Mockito.*;
 public class ExampleTest {
 
     BibliotecaApp bibliotecaApp;
-    BibliotecaApp bibliotecaAppMock;
     List<Book> listOfBooks;
     String[] menuOption;
     BookList bookList;
@@ -29,9 +28,8 @@ public class ExampleTest {
                 new Book("The Art of Unix Programming", "Eric Raymond", 2003),
                 new Book("Free Software, Free Society", "Richard M. Stallman", 2002));
         bookList = new BookList(listOfBooks);
-        menuOption = new String[]{"List of Books"};
-        bibliotecaApp = new BibliotecaApp(listOfBooks, menuOption);
-        bibliotecaAppMock = mock(BibliotecaApp.class);
+        menuOption = new String[]{"List of Books, Checkout Book, Return Book, Quit Application"};
+        bibliotecaApp = new BibliotecaApp(bookList, menuOption);
     }
 
     @Test
@@ -76,100 +74,10 @@ public class ExampleTest {
         }
     }
 
-   /* @Test
-    public void testGetUserInputInteger(){
-        int userInputInteger = 3;
-        ByteArrayInputStream userIntegerInput = new ByteArrayInputStream(Integer.toString(userInputInteger).getBytes());
-        System.setIn(userIntegerInput);
-        assertEquals(3, user);
-    }*/
-
     @Test
-    public void testInvalidOption(){
-        PrintStream actualInvalidMessage = mock(PrintStream.class);
-        System.setOut(actualInvalidMessage);
-
-        bibliotecaApp.selectOption(1);
-
-        verify(actualInvalidMessage).println("Please select a valid option!");
-    }
-
-    /*@Test public void testSelectQuitApplicationOption()
-    {
-        PrintStream actualExitMessage = mock(PrintStream.class);
-        System.setOut(actualExitMessage);
+    public void testQuitApplicationByChangingTheQuitStateToTrue(){
         bibliotecaApp.quitApplication();
-        assertTrue(bibliotecaApp.exited);
-        verify(actualExitMessage).println("Thank you for using Biblioteca App. Hope to see you again!");
-    }*/
-
-    @Test
-    public void testSelectViewListOfBooksOption(){
-        String listFormat = "%-45s%-25s%s\n";
-        PrintStream actualResponseMessage = mock(PrintStream.class);
-        System.setOut(actualResponseMessage);
-
-        bibliotecaApp.selectOption(0);
-
-        verify(actualResponseMessage).printf(listFormat, "Title", "Author", "Publication Year");
-        for (int i=0; i < listOfBooks.size(); i++) {
-            verify(actualResponseMessage).printf(listFormat, listOfBooks.get(i).title, listOfBooks.get(i).author, listOfBooks.get(i).publicationYear);
-        }
-    }
-
-    @Test
-    public void testChangeBookIsOnLeasedToTrueForCheckOutMethod() {
-        Book book = new Book("Close to the Machine", "Ellen Ullman", 1997);
-        book.checkOut();
-        assertTrue(book.isOnLeased);
-    }
-
-    @Test
-    public void testChangeBookIsOnLeasedToFalseForReturnBookMethod(){
-        Book book = new Book("Close to the Machine", "Ellen Ullman", 1997);
-        book.isOnLeased = true;
-        book.returnBook();
-        assertFalse(book.isOnLeased);
-    }
-
-    @Test
-    public void testBookIsCheckOutWhenBookIsAvailable(){
-        Book book = new Book("Close to the Machine", "Ellen Ullman", 1997);
-        boolean isCheckOut = book.isCheckOut();
-        assertFalse(isCheckOut);
-    }
-
-    @Test
-    public void testBookIsCheckOutWhenBookIsNotAvailable(){
-        Book book = new Book("Close to the Machine", "Ellen Ullman", 1997);
-        book.checkOut();
-        boolean isCheckOut = book.isCheckOut();
-        assertTrue(isCheckOut);
-    }
-
-    @Test
-    public void testWhenTheBookIsNotInTheListOfBooks(){
-        String bookName = "Happy Day";
-        boolean actualOutput = this.bookList.isExist(bookName);
-        assertFalse(actualOutput);
-    }
-
-    @Test
-    public void testWhenTheBookIsInTheListOfBooks(){
-        String bookName = "Free Software, Free Society";
-        boolean actualOutput = this.bookList.isExist(bookName);
-        assertTrue(actualOutput);
-    }
-
-    @Test
-    public void testGetBookByBookNameIfBookExists(){
-        String bookName = "Free Software, Free Society";
-        Book expectedBook = new Book("Free Software, Free Society", "Richard M. Stallman", 2002);
-        Book actualBook = bookList.getBook(bookName);
-        assertEquals(actualBook.title, expectedBook.title);
-        assertEquals(actualBook.author, expectedBook.author);
-        assertEquals(actualBook.publicationYear, expectedBook.publicationYear);
-        assertEquals(actualBook.isOnLeased, expectedBook.isOnLeased);
+        assertTrue(bibliotecaApp.quit);
     }
 
     @Test
@@ -216,16 +124,6 @@ public class ExampleTest {
     }
 
     @Test
-    public void testUserCanReturnBookByChangingTheStateOfBookToFalse(){
-        String inputBookName = "Free Software, Free Society";
-        Book book = bookList.getBook(inputBookName);
-        book.checkOut();
-        bibliotecaApp.returnBook(inputBookName);
-
-        assertFalse(book.isOnLeased);
-    }
-
-    @Test
     public void testNotifyUserOnSuccessfulReturnIfBookExistsAndIsOnLeased(){
         PrintStream actualPrintStatement = mock(PrintStream.class);
         System.setOut(actualPrintStatement);
@@ -256,10 +154,46 @@ public class ExampleTest {
         System.setOut(actualPrintStatement);
 
         String bookName = "Free Software, Free Society";
-        Book book = bookList.getBook(bookName);
         bibliotecaApp.returnBook(bookName);
 
         verify(actualPrintStatement).println("This is not a valid book to return");
+    }
+
+    @Test
+    public void testInvalidOptionIfNumberIsOutsideRange(){
+        PrintStream actualInvalidMessage = mock(PrintStream.class);
+        System.setOut(actualInvalidMessage);
+
+        bibliotecaApp.selectOption(3);
+
+        verify(actualInvalidMessage).println("Please select a valid option!");
+    }
+
+    @Test
+    public void testInvalidOptionIfNumberIsNegative(){
+        PrintStream actualInvalidMessage = mock(PrintStream.class);
+        System.setOut(actualInvalidMessage);
+
+        bibliotecaApp.selectOption(-1);
+        verify(actualInvalidMessage).println("Please select a valid option!");
+    }
+
+    @Test
+    public void testSelectViewListOfBooksOption(){
+        BibliotecaApp bibliotecaAppSpy = spy(bibliotecaApp);
+        bibliotecaAppSpy.selectOption(0);
+        verify(bibliotecaAppSpy).viewListOfBooks();
+    }
+
+    @Test
+    public void testSelectCheckOutBookOption(){
+        BibliotecaApp bibliotecaAppSpy = spy(bibliotecaApp);
+        String bookName = "Free Software, Free Society";
+        InputStream input = new ByteArrayInputStream(bookName.getBytes());
+        System.setIn(input);
+
+        bibliotecaAppSpy.selectOption(2);
+        verify(bibliotecaAppSpy).checkOutBook(bookName);
     }
 
 

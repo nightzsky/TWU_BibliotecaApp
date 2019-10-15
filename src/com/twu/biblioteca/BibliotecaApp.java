@@ -7,30 +7,31 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BibliotecaApp {
-    List<Book> listOfBooks;
     String[] menuList;
     Scanner scanner;
     BookList bookList;
+    boolean quit;
 
-    public BibliotecaApp(List<Book> listOfBooks, String[] menuList){
-        this.listOfBooks = listOfBooks;
-        this.bookList = new BookList(this.listOfBooks);
+    public BibliotecaApp(BookList bookList, String[] menuList){
+        this.bookList = bookList;
         this.menuList = menuList;
         this.scanner = new Scanner(System.in);
+        this.quit = false;
     }
-    public void printWelcomeMessage(){
+
+    void printWelcomeMessage(){
         System.out.println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Banglore!");
     }
 
-    public void viewListOfBooks(){
+    void viewListOfBooks(){
         String listFormat = "%-45s%-25s%s\n";
         System.out.printf(listFormat, "Title", "Author", "Publication Year");
-        for (Book book : listOfBooks){
-            System.out.printf(listFormat, book.title, book.author, book.publicationYear);
+        for (Book book : bookList.listOfBooks){
+            System.out.printf(listFormat, book.getTitle(), book.getAuthor(), book.getPublicationYear());
         }
     }
 
-    public void viewMenu(){
+    void viewMenu(){
         String menuFormat = "%5s  %s\n";
         System.out.printf(menuFormat, "Index", "Option");
         for (int i = 0; i < menuList.length; i++){
@@ -38,63 +39,63 @@ public class BibliotecaApp {
         }
     }
 
-    public int getUserInputInteger(String message){
-        System.out.println(message);
+    int getUserInputInteger(){
         return scanner.nextInt();
     }
 
-    public void selectOption(int index){
-        if (index > menuList.length-1){
+    String getUserInputString(){
+        return scanner.nextLine();
+    }
+
+    void selectOption(int index){
+        System.out.println(index);
+        if (index > menuList.length-1 && index < 0){
             System.out.println("Please select a valid option!");
-            //this.getUserInputInteger("Please key in again.");
-            //prompt for user input
         }
         if (index == 0){
             this.viewListOfBooks();
         }
+        else if (index == 1){
+            String bookName = this.getUserInputString();
+            this.checkOutBook(bookName);
+        }
         else if (index == 2){
-            quitApplication();
+            System.out.println("TESTING");
+            String bookName = this.getUserInputString();
+            this.returnBook(bookName);
+        }
+        else if (index == 3){
+            this.quitApplication();
         }
     }
 
-    public void quitApplication(){
-        System.out.println("Thank you for using Biblioteca App. Hope to see you again!");
-        System.exit(0);
+    void quitApplication(){
+        this.quit = true;
     }
 
-    public void checkOutBook(String bookName){
+    void checkOutBook(String bookName){
         if (bookList.isExist(bookName)){
             Book book = bookList.getBook(bookName);
             if (!book.isCheckOut()){
                 bookList.getBook(bookName).checkOut();
                 System.out.println("Thank you! Enjoy the book");
-            }
-            else {
-                System.out.println("Sorry, that book is not available");
+                return;
             }
         }
-        else {
-            System.out.println("Sorry, that book is not available");
-        }
+        System.out.println("Sorry, that book is not available");
     }
 
-    public void returnBook(String bookName){
+    void returnBook(String bookName){
         if (bookList.isExist(bookName)) {
             Book book = bookList.getBook(bookName);
-            if (book.isOnLeased){
+            if (book.getIsOnLeased()) {
                 book.returnBook();
                 System.out.println("Thank you for returning the book");
-            }
-            else {
-                System.out.println("This is not a valid book to return");
+                return;
             }
         }
-        else {
-            System.out.println("This is not a valid book to return");
-        }
+        System.out.println("This is not a valid book to return");
     }
-
-
 
     public static void main(String[] args)
     {
@@ -108,16 +109,13 @@ public class BibliotecaApp {
                 new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925),
                 new Book("Brave New World", "Aldous Huxley", 1932),
                 new Book("Fahrenheit 451", "Ray Bradbury", 1953));
-        String[] menuList = {"List of Books", "Check Out Book", "Quit Application"};
-        String userInputPromptIntegerMessage = "Please key in the index of your selection.";
+        BookList bookList = new BookList(listOfBooks);
+        String[] menuList = {"List of Books", "Check Out Book", "Return Book", "Quit Application"};
         int command;
-
-        BibliotecaApp app = new BibliotecaApp(listOfBooks, menuList);
+        BibliotecaApp app = new BibliotecaApp(bookList, menuList);
         app.printWelcomeMessage();
         app.viewMenu();
-        command = app.getUserInputInteger(userInputPromptIntegerMessage);
+        command = app.getUserInputInteger();
         app.selectOption(command);
-
-
     }
 }

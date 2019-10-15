@@ -16,7 +16,7 @@ public class BookList {
 
     boolean isExist(String bookName){
         for (Book book : this.listOfBooks){
-            if (book.title == bookName){
+            if (book.getTitle() == bookName){
                 return true;
             }
         }
@@ -25,7 +25,7 @@ public class BookList {
 
     Book getBook(String bookName){
         for (Book book : this.listOfBooks){
-            if (book.title == bookName){
+            if (book.getTitle() == bookName){
                 return book;
             }
         }
