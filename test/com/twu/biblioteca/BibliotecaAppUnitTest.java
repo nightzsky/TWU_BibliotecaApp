@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +14,7 @@ import static org.mockito.Mockito.*;
 
 
 
-public class ExampleTest {
+public class BibliotecaAppUnitTest {
 
     BibliotecaApp bibliotecaApp;
     List<Book> listOfBooks;
@@ -72,6 +71,28 @@ public class ExampleTest {
         for (int i = 0; i <menuOption.length; i++){
             verify(actualPrintMenuOption).printf(menuFormat, i, menuOption[i]);
         }
+    }
+
+    @Test
+    public void testUserInputInteger(){
+        int expected = 5;
+        InputStream input = new ByteArrayInputStream(Integer.toString(expected).getBytes());
+        System.setIn(input);
+
+        int actual = bibliotecaApp.getUserInputInteger();
+
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testUserInputString(){
+        String expected = "Hello";
+        InputStream input = new ByteArrayInputStream(expected.getBytes());
+        System.setIn(input);
+
+        String actual = bibliotecaApp.getUserInputString();
+
+        assertEquals(actual, expected);
     }
 
     @Test
@@ -191,11 +212,26 @@ public class ExampleTest {
         String bookName = "Free Software, Free Society";
         InputStream input = new ByteArrayInputStream(bookName.getBytes());
         System.setIn(input);
-
-        bibliotecaAppSpy.selectOption(2);
+        bibliotecaAppSpy.selectOption(1);
         verify(bibliotecaAppSpy).checkOutBook(bookName);
     }
 
+    @Test
+    public void testSelectReturnBookOption(){
+        BibliotecaApp bibliotecaAppSpy = spy(bibliotecaApp);
+        String bookName = "Free Software, Free Society";
+        InputStream input = new ByteArrayInputStream(bookName.getBytes());
+        System.setIn(input);
+        bibliotecaAppSpy.selectOption(2);
+        verify(bibliotecaAppSpy).returnBook(bookName);
+    }
 
+    @Test
+    public void testSelectQuitApplication(){
+        BibliotecaApp bibliotecaAppSpy = spy(bibliotecaApp);
+        bibliotecaAppSpy.selectOption(3);
+        verify(bibliotecaAppSpy).quitApplication();
+    }
 
 }
+

@@ -1,9 +1,5 @@
 package com.twu.biblioteca;
 
-import org.mockito.internal.exceptions.ExceptionIncludingMockitoWarnings;
-
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class BibliotecaApp {
@@ -15,8 +11,11 @@ public class BibliotecaApp {
     public BibliotecaApp(BookList bookList, String[] menuList){
         this.bookList = bookList;
         this.menuList = menuList;
-        this.scanner = new Scanner(System.in);
         this.quit = false;
+    }
+
+    boolean isQuit(){
+        return this.quit;
     }
 
     void printWelcomeMessage(){
@@ -40,16 +39,18 @@ public class BibliotecaApp {
     }
 
     int getUserInputInteger(){
+        Scanner scanner = new Scanner(System.in);
         return scanner.nextInt();
     }
 
     String getUserInputString(){
+        System.out.println("Please key in the book name:");
+        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
     void selectOption(int index){
-        System.out.println(index);
-        if (index > menuList.length-1 && index < 0){
+        if (index > menuList.length-1 || index < 0){
             System.out.println("Please select a valid option!");
         }
         if (index == 0){
@@ -60,7 +61,6 @@ public class BibliotecaApp {
             this.checkOutBook(bookName);
         }
         else if (index == 2){
-            System.out.println("TESTING");
             String bookName = this.getUserInputString();
             this.returnBook(bookName);
         }
@@ -95,27 +95,5 @@ public class BibliotecaApp {
             }
         }
         System.out.println("This is not a valid book to return");
-    }
-
-    public static void main(String[] args)
-    {
-        List<Book> listOfBooks = Arrays.asList(new Book("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", 1997),
-                new Book("Harry Potter and the Chamber of Secrets", "J.K. Rowling", 1998),
-                new Book("The Hobbit", "J. R. R. Tolkien", 1937),
-                new Book("1984", "George Orwell", 1949),
-                new Book("Twilight", "Stephenie Meyer",2005),
-                new Book("The Da Vinci Code", "Dan Brown", 2000),
-                new Book("The Hunger Games", "Suzanne Collins", 2008),
-                new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925),
-                new Book("Brave New World", "Aldous Huxley", 1932),
-                new Book("Fahrenheit 451", "Ray Bradbury", 1953));
-        BookList bookList = new BookList(listOfBooks);
-        String[] menuList = {"List of Books", "Check Out Book", "Return Book", "Quit Application"};
-        int command;
-        BibliotecaApp app = new BibliotecaApp(bookList, menuList);
-        app.printWelcomeMessage();
-        app.viewMenu();
-        command = app.getUserInputInteger();
-        app.selectOption(command);
     }
 }
