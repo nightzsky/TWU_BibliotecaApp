@@ -52,7 +52,9 @@ public class BibliotecaAppUnitTest {
 
         verify(actualPrintBookMenu).printf(listFormat, "Title", "Author", "Publication Year");
         for (int i=0; i < listOfBooks.size(); i++){
-            verify(actualPrintBookMenu).printf(listFormat, listOfBooks.get(i).title, listOfBooks.get(i).author, listOfBooks.get(i).publicationYear);
+            if (!listOfBooks.get(i).isCheckOut()){
+                verify(actualPrintBookMenu).printf(listFormat, listOfBooks.get(i).title, listOfBooks.get(i).author, listOfBooks.get(i).publicationYear);
+            }
         }
     }
 

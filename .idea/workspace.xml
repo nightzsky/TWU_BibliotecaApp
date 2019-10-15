@@ -4,8 +4,7 @@
     <list default="true" id="c15c0487-5e9b-4a71-a49b-6023332c2b07" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/BibliotecaApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/twu/biblioteca/BookList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/twu/biblioteca/BookList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/ExampleTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/com/twu/biblioteca/BibliotecaAppUnitTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +53,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BibliotecaAppUnitTest">
+  <component name="RunManager" selected="JUnit.BibliotecaAppUnitTest.testViewListOfBooks">
     <configuration name="BibliotecaTest" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.ExampleTest" />
       <module name="TWU_Biblioteca-master" />
@@ -90,7 +89,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExampleTest.testInvalidOptionIfNumberIsOutsideRange" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BibliotecaAppUnitTest.testViewListOfBooks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TWU_Biblioteca-master" />
       <extension name="coverage">
         <pattern>
@@ -99,8 +98,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.twu.biblioteca" />
-      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.ExampleTest" />
-      <option name="METHOD_NAME" value="testInvalidOptionIfNumberIsOutsideRange" />
+      <option name="MAIN_CLASS_NAME" value="com.twu.biblioteca.BibliotecaAppUnitTest" />
+      <option name="METHOD_NAME" value="testViewListOfBooks" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -152,19 +151,19 @@
     <list>
       <item itemvalue="Application.BibliotecaTest" />
       <item itemvalue="JUnit.Test" />
-      <item itemvalue="JUnit.ExampleTest.testInvalidOptionIfNumberIsOutsideRange" />
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ExampleTest.testUserInputInteger" />
       <item itemvalue="JUnit.ExampleTest.testUserInputString" />
       <item itemvalue="JUnit.BibliotecaAppUnitTest" />
+      <item itemvalue="JUnit.BibliotecaAppUnitTest.testViewListOfBooks" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BibliotecaAppUnitTest.testViewListOfBooks" />
         <item itemvalue="JUnit.BibliotecaAppUnitTest" />
         <item itemvalue="JUnit.ExampleTest.testUserInputString" />
         <item itemvalue="JUnit.ExampleTest.testUserInputInteger" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ExampleTest.testInvalidOptionIfNumberIsOutsideRange" />
       </list>
     </recent_temporary>
   </component>

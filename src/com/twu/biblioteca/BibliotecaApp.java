@@ -26,7 +26,9 @@ public class BibliotecaApp {
         String listFormat = "%-45s%-25s%s\n";
         System.out.printf(listFormat, "Title", "Author", "Publication Year");
         for (Book book : bookList.listOfBooks){
-            System.out.printf(listFormat, book.getTitle(), book.getAuthor(), book.getPublicationYear());
+            if (!book.isCheckOut()){
+                System.out.printf(listFormat, book.getTitle(), book.getAuthor(), book.getPublicationYear());
+            }
         }
     }
 
